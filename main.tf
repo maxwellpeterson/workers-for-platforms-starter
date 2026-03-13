@@ -23,6 +23,7 @@ data "cloudflare_zone" "app_gateway" {
 resource "cloudflare_worker" "app_gateway" {
   account_id = var.account_id
   name       = "app-gateway"
+  depends_on = [cloudflare_workers_for_platforms_dispatch_namespace.apps]
 
   observability = {
     enabled = true
@@ -74,6 +75,7 @@ resource "cloudflare_workers_custom_domain" "app_gateway" {
   hostname    = "apps.${var.zone_name}"
   service     = cloudflare_worker.app_gateway.name
   environment = "production"
+  depends_on  = [cloudflare_workers_deployment.app_gateway]
 }
 
 resource "cloudflare_zero_trust_access_policy" "app_gateway_email_otp" {

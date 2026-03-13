@@ -12,3 +12,9 @@ To add more apps to the same `apps` dispatch namespace later:
 ```sh
 npm run upload -- another-app
 ```
+
+To tear down all Terraform-managed resources:
+
+```sh
+npm run destroy
+```

@@ -2,7 +2,6 @@
 
 Before you run setup, make sure these tools are already installed and available in your shell:
 
-- `npm`
 - `terraform`
 
 1. Create a copy of `.env.example` named `.env`:
